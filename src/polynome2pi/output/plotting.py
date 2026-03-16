@@ -36,6 +36,10 @@ def add_reference_lines(sector: ScanSector, i_T: int):
     i7_= 2.5* i4_ - 1.5 * i3_ - 0.5 * i2_;
     i9_ = 2 * i4_ + 2 * i3_ + 1.5 * i2_;
     i10_ = 1.5 * i4_ + 0.5 * i3_ + 0.5 * i2_;
+    i11_ = 2 * i4_ - 2 * i3_  - 2 * i2_ - 2 * i1_ 
+    i12_ = 1 * i4_ - 2 * i3_  - 2 * i2_ - 2 * i1_ 
+    i13_ = 3/2 * i4_ - 2 * i3_  - 2 * i2_ - 2 * i1_   
+    i14_ = 1/2 * i4_ - 2 * i3_  - 2 * i2_ - 2 * i1_ 
 
     if sector is ScanSector.broad:
         plt.plot([x_a, x_m], [i4_, i4_], "k", linewidth=1)
@@ -52,12 +56,26 @@ def add_reference_lines(sector: ScanSector, i_T: int):
         plt.text(x_a, i6_ + 15, r"$(2\pi)^4+(2\pi)^3+(2\pi)^2$", fontsize=12, color="blue")
 
     if sector is ScanSector.heavy:
-        plt.plot([x_a, 4 * x_m], [i7_, i7_], "k", linewidth=1); 
-        plt.text(x_a, i7_+ 15, r"$5/2(2\pi)^4-3/2(2\pi)^3-1/2(2\pi)^2$", fontsize=12, color='blue')
-        plt.plot([x_a, 4 * x_m], [i9_, i9_], "k",linewidth=1); 
-        plt.text(x_a, i9_ + 15, r"$2(2\pi)^4+2(2\pi)^3+3/2(2\pi)^2$", fontsize=12, color='blue')
-        plt.plot([x_a, 3 * x_m], [i10_, i10_], "k", linewidth=1); 
-        plt.text(x_a, i10_ + 15, r"$3/2(2\pi)^4+1/2(2\pi)^3+1/2(2\pi)^2$", fontsize=12, color='blue')
+        plt.plot([x_a, 4.5 * x_m], [i7_, i7_], "k",linewidth=1); 
+        plt.text(x_a, i7_ + 15, r"$5/2(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
+        plt.plot([x_a, 3.8 * x_m], [i11_, i11_], "k", linewidth=1); 
+        plt.text(x_a, i11_ + 15, r"$2(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
+        plt.plot([1.8 * x_m, 5 * x_m], [i12_, i12_], "k", linewidth=1); 
+        plt.text(3 * x_m, i12_ + 15, r"$(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
+        plt.plot([2.8 * x_m, 5 * x_m], [i13_, i13_], "k", linewidth=1); 
+        plt.text(3.3 * x_m, i13_ - 150, r"$3/2(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
+        plt.plot([0.8 * x_m, 5 * x_m], [i14_, i14_], "k", linewidth=1); 
+        plt.text(3 * x_m, i14_ + 15, r"$1/2(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
+
+    if sector is ScanSector.E222:
+        plt.plot([x_a, 4.5 * x_m], [i11_, i11_], "k", linewidth=1); 
+        plt.text(x_a, i11_ + 15, r"$2(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
+        plt.plot([x_a, 2.0 * x_m], [i13_, i13_], "k", linewidth=1); 
+        plt.text(x_a, i13_ + 15, r"$3/2(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
+        plt.plot([2.5 * x_m, 5 * x_m], [i12_, i12_], "k", linewidth=1); 
+        plt.text(3 * x_m, i12_ + 15, r"$(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
+        plt.plot([1.5 * x_m, 5 * x_m], [i14_, i14_], "k", linewidth=1); 
+        plt.text(3 * x_m, i14_ + 15, r"$1/2(2\pi)^4-2(2\pi)^3-2(2\pi)^2-2(2\pi)$", fontsize=12, color='blue')
 
     if sector is ScanSector.E333D:
         plt.plot([x_a, x_m], [i6_, i6_], "k", linewidth=1)
@@ -108,6 +126,11 @@ def label_offsets_for_sector(sector: ScanSector, j: int):
         return X, -0, 16
 
     if sector is ScanSector.heavy:                                                  #H
+        X = [0, 5, 10, 15, 20, 24, 20, 38, -35, -20, 18, -38, -15, 5, 22, 25, -20, -30, -19, -14, 20, 20, 10, -10, -30, -15, -5, 0, 0]
+        X[j] *= 2
+        return X, -30, 12
+    
+    if sector is ScanSector.E222:                                                  #H
         X = [0, 5, 10, 15, 20, 24, 20, 38, -35, -20, 18, -38, -15, 5, 22, 25, -20, -30, -19, -14, 20, 20, 10, -10, -30, -15, -5, 0, 0]
         X[j] *= 2
         return X, -30, 12
