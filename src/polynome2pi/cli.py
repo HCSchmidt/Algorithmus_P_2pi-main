@@ -11,6 +11,7 @@ class ScanSector(str, Enum):
     E112P = "112 E > 1700"
     E333U = "333 E > 1700"  
     E333D = "333 E < 2000" 
+    E222 = "222 u d s c E < 3000" 
 
 @dataclass
 class PolynomeConfig:
@@ -72,5 +73,8 @@ def select_preset_by_sector(sector: ScanSector) -> PolynomeConfig:
 
     if sector is ScanSector.E333D:
         return PolynomeConfig(J4=3, J3=3, J2=3, add_info=8) 
+    
+    if sector is ScanSector.E222:
+        return PolynomeConfig(J4=2, J3=2, J2=2, add_info=9) 
 
     raise ValueError(f"Unhandled sector: {sector}")
