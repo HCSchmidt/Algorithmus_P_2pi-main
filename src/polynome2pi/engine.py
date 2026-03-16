@@ -32,6 +32,7 @@ def run_scan(
     is_E112P = (sector is ScanSector.E112P)
     is_E333U = (sector is ScanSector.E333U)
     is_E333D = (sector is ScanSector.E333D)
+    is_E222 = (sector is ScanSector.E222)
 
     i_T = 0
     i_T1 = 0
@@ -68,6 +69,7 @@ def run_scan(
                                 if is_E333U and E0 < 1700: continue
                                 if is_E112P and E0 < E1700: continue                                
                                 if is_E333D and E0 > 2000: continue 
+                                if is_E222 and E0 > 3000: continue 
                                 if is_nucleon and (E0 < 1830 or E0 > 1843): continue
                                 
                                 i_T += 1
