@@ -5,10 +5,10 @@ from polynome2pi.main import main
 #    Selection of the experiment
 Exp = [ "000 u d", "012 u d s", "112 u d s nucleon",
       "111 H-atom", "112 E > 1700", "222 u d s c",
-      "333 E > 1700", "333 E < 2000",  
+      "333 E > 1700", "333 E < 2000", "222 u d s c E < 3000",
     ]
 ARGS = [
-        "--sector", Exp[5]
+        "--sector", Exp[8]
     ]
 # select Charge  [" ","1","2/3","1/3","0","-1/3","-2/3","-1","+-1"] 
 ARGC = [
